@@ -17,7 +17,7 @@ Before running the script, you'll need:
 1. Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/cloudflare-dns-updater.git
+git clone [https://github.com/MrJacob12/CloudFlare-Dynamic-DNS.git](https://github.com/MrJacob12/CloudFlare-Dynamic-DNS.git)
 ```
 2. Create a config.json file in the project directory and populate it with your CloudFlare account information and the zones/records you want to update. Use the provided template in the example below:
 ```json
