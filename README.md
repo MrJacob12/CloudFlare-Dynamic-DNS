@@ -19,31 +19,47 @@ Before running the script, you'll need:
 ```bash
 git clone https://github.com/MrJacob12/CloudFlare-Dynamic-DNS.git
 ```
-2. Create a config.json file in the project directory and populate it with your CloudFlare account information and the zones/records you want to update. Use the provided template in the example below:
-```json
-{
-    "email": "your-email@example.com",
-    "key": "your-cloudflare-api-key",
-    "zones": [
-        {
-            "zone": "example.com",
-            "zone_id": "your-zone-id",
-            "records": [
-                {
-                    "type": "A",
-                    "rec_id": "your-record-id",
-                    "name": "api",
-                    "proxied": true,
-                    "ttl": 1
-                }
-            ]
-        }
-    ]
-}
+
+2. Install the required Python packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Create .env file in the project directory and populate it with your CloudFlare account information and the zones/records you want to update. Use the provided template in the example below:
 
 ```
+CF_API_KEY="KEY"
+```
+
+4. Create a config.json file in the project directory and populate it with your CloudFlare account information and the zones/records you want to update. Use the provided template in the example below:
+
+```json
+{
+  "email": "your-email@example.com",
+  "key": "your-cloudflare-api-key",
+  "zones": [
+    {
+      "zone": "example.com",
+      "zone_id": "your-zone-id",
+      "records": [
+        {
+          "type": "A",
+          "rec_id": "your-record-id",
+          "name": "api",
+          "proxied": true,
+          "ttl": 1
+        }
+      ]
+    }
+  ]
+}
+```
+
 ### Contributing
+
 If you'd like to contribute to this project, please open an issue or submit a pull request with your proposed changes.
 
 ### License
+
 This project is licensed under the [MIT](/LICENSE) License - see the LICENSE file for details.

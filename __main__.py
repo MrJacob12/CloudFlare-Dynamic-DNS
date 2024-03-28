@@ -1,4 +1,8 @@
-import json, requests
+import json, requests, os
+
+from dotenv import load_dotenv
+load_dotenv()
+
 
 def get_public_ip():
     return requests.get('http://ipv4.icanhazip.com').text.strip()
@@ -43,15 +47,24 @@ def update_dns_record(email, key, zone_id, rec_id, type, name, content, ttl=1, p
 
     return update_response.json()['success']
 
-if __name__ == '__main__':
-    # Load parameters and records from JSON file
+def secret_handler():
+    key = os.getenv('CF_API_KEY')
+    return key
+
+def config_handler():
+    if not os.path.exists('config.json'):
+        print('Config file not found. Please create a config.json file in the same directory as this script.')
+        exit(1)
     with open('config.json', 'r') as file:
         config = json.load(file)
-    
     email = config['email']
-    key = config['key']
+    key = secret_handler()
     zones = config['zones']
+    return email, key, zones
 
+if __name__ == '__main__':
+    # Load parameters and records from JSON file
+    email, key, zones = config_handler()
     for zone_config in zones:
         zone = zone_config['zone']
         zone_id = zone_config['zone_id']
