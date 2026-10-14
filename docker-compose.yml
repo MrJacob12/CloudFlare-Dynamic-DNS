@@ -1,0 +1,12 @@
+services:
+  cloudflare-ddns:
+    build: .
+    image: cloudflare-ddns:latest
+    container_name: cloudflare-ddns
+    restart: unless-stopped
+    environment:
+      UPDATE_INTERVAL: "300"
+    env_file:
+      - .env
+    volumes:
+      - ./config.json:/app/config.json:ro
